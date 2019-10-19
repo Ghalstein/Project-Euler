@@ -3,6 +3,7 @@ public class EvenFibonacci {
   // accepts a param/ limit to fib numbers and sums up the even ones
   public static long sum(long limit) {
     long i = 1;
+    if (limit < 1) return -1;
     if (limit == 1)
       return 1;
     long sum = 1;
