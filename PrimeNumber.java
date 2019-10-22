@@ -31,6 +31,13 @@ public class PrimeNumber {
   }
 
   public static void main(String[] args) {
+    System.out.println(max(-1));
+    System.out.println(max(0));
+    System.out.println(max(2));
+    System.out.println(max(5));
+    System.out.println(max(150));
+    System.out.println(max(600851475));
+
 
   }
 }
