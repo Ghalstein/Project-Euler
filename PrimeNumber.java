@@ -21,12 +21,11 @@ public class PrimeNumber {
     // loop that adds prime numbers and tests them against current prime number
     bigLoop: while (i < n / 2) {
       for (int value : primes) {
-        if (i % value == 0) {
+        if (i % value == 0 || i % 3 == 0) {
           i += 2;
           continue bigLoop;
         }
       }
-
       primes.add(i);
 
       i += 2;
@@ -34,8 +33,13 @@ public class PrimeNumber {
 
     if (primes.isEmpty())
       return 1;
-    else
-      return primes.get(primes.size() - 1);
+    else {
+      i = primes.size() - 1;
+        while (i >= 0) {
+          if (n % primes.get(i) == 0) return primes.get(i);
+          --i;
+        }}
+    return 1;
   }
 
   public static void main(String[] args) {
@@ -44,7 +48,7 @@ public class PrimeNumber {
     System.out.println(max(2));
     System.out.println(max(5));
     System.out.println(max(18));
-    System.out.println(max(6008101));
+    // System.out.println(max(6008));
 
   }
 }
