@@ -4,30 +4,38 @@ First look at 2 becasue there cannot be a prime factor lower than 2
 Remeber to check if % 2 == 0 becasue that would give the hgihest value
 */
 
+import java.util.*;
+
 public class PrimeNumber {
 
   // finds the largest prime factor
   public static int max(int n) {
+    ArrayList<Integer> primes = new ArrayList<>();
 
     // null case
     if (n < 1)
       return -1;
 
-    // handles best case
-    if (n % 2 == 0)
-      return n / 2;
-
     int i = 3;
 
-    while (i < n / 2) {
-      if (n % i == 0)
-        return n / i;
-      else
-        i += 2;
-    }
-    
-    return 1;
+    // loop that adds prime numbers and tests them against current prime number
+    bigLoop: while (i < n / 2) {
+      for (int value : primes) {
+        if (i % value == 0) {
+          i += 2;
+          continue bigLoop;
+        }
+      }
 
+      primes.add(i);
+
+      i += 2;
+    }
+
+    if (primes.isEmpty())
+      return 1;
+    else
+      return primes.get(primes.size() - 1);
   }
 
   public static void main(String[] args) {
@@ -35,9 +43,8 @@ public class PrimeNumber {
     System.out.println(max(0));
     System.out.println(max(2));
     System.out.println(max(5));
-    System.out.println(max(150));
-    System.out.println(max(600851475));
-
+    System.out.println(max(18));
+    System.out.println(max(6008101));
 
   }
 }
